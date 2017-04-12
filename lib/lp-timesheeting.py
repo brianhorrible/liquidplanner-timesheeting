@@ -192,6 +192,7 @@ def main():
             print ("No Default Activity for your user found. Please select activity.")
             activity_list = LP.retrieve_activities()
             pprint(activity_list)
+            sys.stdin = open('/dev/tty')
             activity_id = raw_input('No default activity found for your user. Please enter an activity ID.\n>')
 
         task_name = get_branch_name()
@@ -208,6 +209,7 @@ def main():
         print('LP URL:' + LP.show_task_url(task_id))
         print('If this is not the task you wanted, please hit CTRL+C to exit')
 
+        sys.stdin = open('/dev/tty')
         hours = input('Please enter number of hours for your timesheet. \n>')
         if type(hours) == float or int:
             LP.track_time_to_task(activity_id, task_id, hours)
